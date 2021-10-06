@@ -1,0 +1,62 @@
+ 
+****************************************
+Report : qor
+Design : mips_16_core_top
+Version: C-2009.06-SP5
+Date   : Mon April 13 14:04:11 2020
+****************************************
+
+
+  Timing Path Group (none)
+  -----------------------------------
+  Levels of Logic:               0.00
+  Critical Path Length:          0.28
+  Critical Path Slack:         uninit
+  Critical Path Clk Period:     Undef
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:         14
+  Hierarchical Port Count:        780
+  Leaf Cell Count:              11452
+  Buf/Inv Cell Count:             253
+  CT Buf/Inv Cell Count:            0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:   214586.062394
+  Noncombinational Area:
+                        236939.474960
+  Net Area:                  0.000000
+  -----------------------------------
+  Cell Area:            451525.537354
+  Design Area:          451525.537354
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:         11497
+  Nets With Violations:             0
+  -----------------------------------
+
+
+  Hostname: ICICVM.lab.edu
+
+  Compile CPU Statistics
+  -----------------------------------
+  Resource Sharing:              4.74
+  Logic Optimization:           10.63
+  Mapping Optimization:         11.26
+  -----------------------------------
+  Overall Compile Time:         28.98
+
+1

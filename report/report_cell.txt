@@ -1,0 +1,35 @@
+ 
+****************************************
+Report : cell
+Design : mips_16_core_top
+Version: C-2009.06-SP5
+Date   : Mon April 13 14:04:11 2020
+****************************************
+
+Attributes:
+    b - black box (unknown)
+    h - hierarchical
+    n - noncombinational
+    r - removable
+    u - contains unmapped logic
+
+Cell                      Reference       Library             Area  Attributes
+--------------------------------------------------------------------------------
+EX_stage_inst             EX_stage                        10601.236904
+                                                                    h, n
+ID_stage_inst             ID_stage                        6669.432059
+                                                                    h, n
+IF_stage_inst             IF_stage                        1377.129611
+                                                                    h, n
+MEM_stage_inst            MEM_stage                       413707.695435
+                                                                    h, n
+WB_stage_inst             WB_stage                        425.779205
+                                                                    h
+hazard_detection_unit_inst
+                          hazard_detection_unit           648.648007
+                                                                    h
+register_file_inst        register_file                   18095.616133
+                                                                    h, n
+--------------------------------------------------------------------------------
+Total 7 cells                                             451525.537354
+1

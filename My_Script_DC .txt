@@ -1,0 +1,146 @@
+#################set LIBRARIES###############################
+
+	set target_library 	"/home/icic/Desktop/tsmc_0.18u.db"
+	set link_library   	"/home/icic/Desktop/tsmc_0.18u.db"
+	set symbol_library 	"/home/icic/Desktop/tsmc18.sdb"
+
+#############################################################
+#############Define some variables###########################
+#############################################################
+	set my_toplevel tdes
+	
+	set my_clock_pin clk
+	set my_clk_freq_MHz 100
+	set my_input_delay_ns 0
+	set my_output_delay_ns 0
+	
+	define_design_lib DEFAULT -path "./WORK"
+
+##############################################################
+####################Analyze & Elaborate#######################
+##############################################################
+
+	analyze -library WORK -format verilog  {./Source/tdes.v
+						./Source/key_sel.v
+						./Source/crp.v
+						./Source/sbox1.v
+						./Source/sbox2.v
+						./Source/sbox3.v
+						./Source/sbox4.v
+						./Source/sbox5.v
+						./Source/sbox6.v
+						./Source/sbox7.v
+						./Source/sbox8.v}
+
+	elaborate $my_toplevel 
+
+	current_design $my_toplevel
+
+	link
+
+	uniquify
+	#This Command Will give a unique name for each module so the repeated modules won't be combined.
+
+##################################################################
+####################### Generate CLOCK############################
+##################################################################
+
+	set my_period [expr 1000 / $my_clk_freq_MHz]
+		#Set the clk periode in ns e.g. 1000/200 = 5 ns which means 200 MHz signal clk.
+   
+	set find_clock [find port [list $my_clock_pin]]
+
+	if { $find_clock != [list] } {
+	   set clk_name $my_clock_pin
+	   create_clock -period $my_period $clk_name
+       	   set_dont_touch_network $clk_name
+   	   set_fix_hold $clk_name
+	} else {
+	   set clk_name vclk
+	   create_clock -period $my_period -name $clk_name
+	   set_dont_touch_network $clk_name
+	   	#do not put buffer in clk path.
+	   set_fix_hold $clk_name
+	   	#want to meet hold time. 
+	}	
+
+###################################################################
+#############define the design environment#########################
+###################################################################
+
+	set_driving_cell -lib_cell INVX20 [all_inputs]
+		# Think that all inputs will be drived by an inverter.
+	
+	#set load [load_of typical/BUFX8/A]
+	#set_load $load [all_outputs]
+	
+	set_operating_conditions -library typical typical
+
+	set_wire_load_model -name tsmc18_wl40 -library typical
+
+	set_wire_load_mode top
+
+#################################################################
+############# set the optimization constraints ##################
+#################################################################
+
+	set_input_delay $my_input_delay_ns -clock $clk_name [remove_from_collection [all_inputs] $my_clock_pin]
+	set_output_delay $my_output_delay_ns -clock $clk_name [all_outputs]
+
+######### ungroup & flatten & Area optimization##################
+
+	ungroup -all -all_instances 
+	#ungroup -all -force -flatten
+	#ungroup -flatten -all
+	#set_flatten true -effort high
+	#set_structure true -boolean true -boolean_effort high
+	#set_max_area 0
+
+#################################################################
+############# map and optimize the design #######################
+#################################################################
+
+	set_host_options -max_cores 4
+	compile -area_effort none -incremental_mapping
+	#compile -map_effort high -incremental_mapping
+	#compile_ultra -no_autoungroup -num_cpus 10
+	#compile_ultra -timing_high_effort_script
+	#compile_ultra -incrimental -timing_high_effort_script
+	#compile_ultra -num_cpus 10
+	#compile_ultra -no_autoungroup -num_cpus 10
+	
+
+#################################################################
+############# activity back annotation     ######################
+#################################################################
+	read_saif -input activity.saif -instance_name testbench/dut
+
+#################################################################
+############# analyze and debug the design ######################
+#################################################################
+
+	check_design
+	remove_unconnected_ports -blast_buses [find -hierarchy cell "*"]
+	report_power 
+	report_qor > ./out/report_qor.txt
+	report_timing -delay min -max_paths 5 > ./out/delay_min.txt
+	report_timing -delay max -max_paths 5 > ./out/delay_max.txt
+	report_cell   > ./out/cell.txt
+	report_area   > ./out/area.txt
+	report_port   > ./out/port.txt
+	report_timing > ./out/time.txt
+	report_constraint -all_violators > ./out/violate.txt
+
+	set filename [format "%s%s" $my_toplevel "_dc_netlist.v"]  
+		# %s%s determine the original name of design not the given name by design compiler!!
+
+	write -f verilog -output ./out/$filename -hierarchy
+	set filename [format "%s%s" $my_toplevel ".sdc"]
+	write_sdc ./out/$filename
+	set filename [format "%s%s" $my_toplevel ".sdf"]
+	write_sdf ./out/$filename
+	set filename [format "%s%s" $my_toplevel ".spef"]
+	write_parasitics -output ./out/$filename
+	set filename [format "%s%s" $my_toplevel ".ddc"]	
+	write -format ddc -hierarchy -output ./$filename
+

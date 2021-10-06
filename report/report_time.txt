@@ -1,0 +1,34 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : mips_16_core_top
+Version: C-2009.06-SP5
+Date   : Mon April 13 14:04:11 2020
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: typical   Library: typical
+Wire Load Model Mode: top
+
+  Startpoint: IF_stage_inst/pc_reg[0]
+              (rising edge-triggered flip-flop)
+  Endpoint: pc[0] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  IF_stage_inst/pc_reg[0]/CK (DFFRHQX1)                   0.00 #     0.00 r
+  IF_stage_inst/pc_reg[0]/Q (DFFRHQX1)                    0.28       0.28 r
+  IF_stage_inst/pc[0] (IF_stage)                          0.00       0.28 r
+  pc[0] (out)                                             0.00       0.28 r
+  data arrival time                                                  0.28
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+1

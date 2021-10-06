@@ -1,0 +1,24 @@
+ 
+****************************************
+Report : area
+Design : mips_16_core_top
+Version: C-2009.06-SP5
+Date   : Mon April 13 14:04:11 2020
+****************************************
+
+Library(s) Used:
+
+    typical (File: /home/icic/Desktop/DC_MIN_AREA/typical.db)
+
+Number of ports:               10
+Number of nets:               224
+Number of cells:                7
+Number of references:           7
+
+Combinational area:       214586.062394
+Noncombinational area:    236939.474960
+Net Interconnect area:      undefined  (No wire load specified)
+
+Total cell area:          451525.537354
+Total area:                 undefined
+1

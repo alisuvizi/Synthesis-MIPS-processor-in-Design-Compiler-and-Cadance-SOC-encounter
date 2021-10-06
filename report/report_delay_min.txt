@@ -1,0 +1,102 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay min
+        -max_paths 5
+Design : mips_16_core_top
+Version: C-2009.06-SP5
+Date   : Mon April 13 14:04:11 2020
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: typical   Library: typical
+Wire Load Model Mode: top
+
+  Startpoint: IF_stage_inst/pc_reg[7]
+              (rising edge-triggered flip-flop)
+  Endpoint: pc[7] (output port)
+  Path Group: (none)
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  IF_stage_inst/pc_reg[7]/CK (DFFRHQX1)                   0.00 #     0.00 r
+  IF_stage_inst/pc_reg[7]/Q (DFFRHQX1)                    0.19       0.19 f
+  IF_stage_inst/pc[7] (IF_stage)                          0.00       0.19 f
+  pc[7] (out)                                             0.00       0.19 f
+  data arrival time                                                  0.19
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: IF_stage_inst/pc_reg[3]
+              (rising edge-triggered flip-flop)
+  Endpoint: pc[3] (output port)
+  Path Group: (none)
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  IF_stage_inst/pc_reg[3]/CK (DFFRHQX1)                   0.00 #     0.00 r
+  IF_stage_inst/pc_reg[3]/Q (DFFRHQX1)                    0.19       0.19 f
+  IF_stage_inst/pc[3] (IF_stage)                          0.00       0.19 f
+  pc[3] (out)                                             0.00       0.19 f
+  data arrival time                                                  0.19
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: IF_stage_inst/pc_reg[4]
+              (rising edge-triggered flip-flop)
+  Endpoint: pc[4] (output port)
+  Path Group: (none)
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  IF_stage_inst/pc_reg[4]/CK (DFFRHQX1)                   0.00 #     0.00 r
+  IF_stage_inst/pc_reg[4]/Q (DFFRHQX1)                    0.19       0.19 f
+  IF_stage_inst/pc[4] (IF_stage)                          0.00       0.19 f
+  pc[4] (out)                                             0.00       0.19 f
+  data arrival time                                                  0.19
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: IF_stage_inst/pc_reg[5]
+              (rising edge-triggered flip-flop)
+  Endpoint: pc[5] (output port)
+  Path Group: (none)
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  IF_stage_inst/pc_reg[5]/CK (DFFRHQX1)                   0.00 #     0.00 r
+  IF_stage_inst/pc_reg[5]/Q (DFFRHQX1)                    0.19       0.19 f
+  IF_stage_inst/pc[5] (IF_stage)                          0.00       0.19 f
+  pc[5] (out)                                             0.00       0.19 f
+  data arrival time                                                  0.19
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: IF_stage_inst/pc_reg[6]
+              (rising edge-triggered flip-flop)
+  Endpoint: pc[6] (output port)
+  Path Group: (none)
+  Path Type: min
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  IF_stage_inst/pc_reg[6]/CK (DFFRHQX1)                   0.00 #     0.00 r
+  IF_stage_inst/pc_reg[6]/Q (DFFRHQX1)                    0.19       0.19 f
+  IF_stage_inst/pc[6] (IF_stage)                          0.00       0.19 f
+  pc[6] (out)                                             0.00       0.19 f
+  data arrival time                                                  0.19
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+1

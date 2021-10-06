@@ -1,0 +1,43 @@
+Loading db file '/home/icic/Desktop/DC_MIN_AREA/typical.db'
+Information: Updating design information... (UID-85)
+Warning: Design 'mips_16_core_top' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: There is no defined clock in the design. (PWR-80)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : mips_16_core_top
+Version: C-2009.06-SP5
+Date   : Mon April 13 14:04:11 2020
+****************************************
+
+
+Library(s) Used:
+
+    typical (File: /home/icic/Desktop/DC_MIN_AREA/typical.db)
+
+
+Operating Conditions: typical   Library: typical
+Wire Load Model Mode: top
+
+
+Global Operating Voltage = 1.8  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+  Cell Internal Power  =  14.6993 mW   (99%)
+  Net Switching Power  = 155.4223 uW    (1%)
+                         ---------
+Total Dynamic Power    =  14.8547 mW  (100%)
+
+Cell Leakage Power     =   2.5695 uW
+
+1
